@@ -18,6 +18,6 @@ route.post(
 
 route.post("/login", Login)
 
-route.get("/get", userController.findAllUsers)
+route.get("/users", userController.findAllUsers)
 
 export default route

@@ -12,13 +12,10 @@ app.use("/auth", route)
 app.set(dotenv.config())
 mongoose.set("strictQuery", false)
 mongoose
-  .connect(`${process.env.MONGO_URI}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(console.log("Connection Successful"))
-  .catch((error) => console.log(error))
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true })
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.log(err))
 
 app.listen(3000, () => {
-  console.log(`App is Listining on http://localhost:3000/${PORT}`)
+  console.log(`App is Listining on http://localhost:${PORT}`)
 })
