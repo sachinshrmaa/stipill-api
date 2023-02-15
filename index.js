@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 import bodyParser from "body-parser"
 import route from "./Routes/route.js"
 import dotenv from "dotenv"
+const PORT = process.env.PORT || 3000
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -19,5 +20,5 @@ mongoose
   .catch((error) => console.log(error))
 
 app.listen(3000, () => {
-  console.log("App is Listining on http://localhost:3000/")
+  console.log(`App is Listining on http://localhost:3000/${PORT}`)
 })
