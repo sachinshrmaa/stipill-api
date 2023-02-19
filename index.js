@@ -22,6 +22,10 @@ app.use(bodyParser.json())
 // Routes
 app.use("/auth", usersRoute)
 
+app.get('/', (req, res) => {
+  res.send('stipill api')
+})
+
 // mongodb connection
 connectDB()
 
