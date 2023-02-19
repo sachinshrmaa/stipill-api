@@ -1,6 +1,6 @@
 import { validationResult } from "express-validator"
-import userSchema from "../models/userSchema.js"
-import hashPassword from "../utils/hashPassword.js"
+import userSchema from "../Models/userSchema.js"
+import hashPassword from "../Utils/hashPassword.js"
 
 const Signup = async (req, res) => {
   const { name, email, password } = req.body
