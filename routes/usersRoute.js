@@ -1,6 +1,6 @@
 import { Router } from "express"
-import userController from "../Controllers/userController.js"
-import Login from "../Controllers/loginController.js"
+import userController from "../controllers/userController.js"
+import Login from "../controllers/loginController.js"
 import { check } from "express-validator"
 const route = Router()
 

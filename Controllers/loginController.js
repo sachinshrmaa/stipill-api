@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs"
-import userSchema from "../Models/userSchema.js"
+import userSchema from "../models/userSchema.js"
 
 const Login = async (req, res) => {
   try {

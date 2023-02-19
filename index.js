@@ -1,21 +1,31 @@
+
 import express from "express"
-import mongoose from "mongoose"
 import bodyParser from "body-parser"
-import route from "./Routes/route.js"
+import usersRoute from "./routes/usersRoute.js"
 import dotenv from "dotenv"
-const PORT = process.env.PORT || 3000
+import cors from "cors"
+import connectDB from "./config/dbConfig.js"
+import corsOptions from './config/corsOptions.js'
+
 const app = express()
+
+app.set(dotenv.config())
+
+const PORT = process.env.PORT || 3000
+
+// CORS Origins
+app.use(cors(corsOptions))
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use("/auth", route)
-app.set(dotenv.config())
-mongoose.set("strictQuery", false)
-mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true })
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log(err))
 
-app.listen(3000, () => {
+// Routes
+app.use("/auth", usersRoute)
+
+// mongodb connection
+connectDB()
+
+// server running
+app.listen(PORT, () => {
   console.log(`App is Listining on http://localhost:${PORT}`)
 })
